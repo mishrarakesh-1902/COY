@@ -1,0 +1,486 @@
+{
+  "profiles": [
+    {
+      "id": "coy_user_01",
+      "name": "Aanya Sharma",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      "bio": "Architecture major obsessed with brutalist design, cold brew, and film photography ☕🎞️",
+      "cityOrCollege": "IIT Roorkee",
+      "interests": [
+        "Architecture",
+        "Analog Photography",
+        "Coffee",
+        "Indie Pop"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_02",
+      "name": "Rohan Verma",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+      "bio": "CS sophomore building weird AI tools. Catch me playing electric guitar at 2 AM 🎸⚡",
+      "cityOrCollege": "BITS Pilani",
+      "interests": [
+        "Electric Guitar",
+        "Artificial Intelligence",
+        "Sci-Fi",
+        "Chess"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_03",
+      "name": "Meera Patel",
+      "age": 20,
+      "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      "bio": "Economics nerd by day, competitive badminton player on weekends. Looking for concert buddies 🏸🎵",
+      "cityOrCollege": "St. Stephen's, Delhi",
+      "interests": [
+        "Badminton",
+        "Vinyl Records",
+        "Economics",
+        "Live Gigs"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_04",
+      "name": "Kabir Sengupta",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+      "bio": "Literature grad writing cynical poetry and searching for the city's crispest sourdough 🥖📚",
+      "cityOrCollege": "Jadavpur University",
+      "interests": [
+        "Creative Writing",
+        "Baking",
+        "Cinephile",
+        "Late Talks"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_05",
+      "name": "Dia Deshmukh",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80",
+      "bio": "Product designer passionate about typography, ceramics, and making matcha lattes 🍵✨",
+      "cityOrCollege": "NID Ahmedabad",
+      "interests": [
+        "UI/UX Design",
+        "Ceramics",
+        "Matcha",
+        "Museums"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_06",
+      "name": "Arjun Nair",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=800&q=80",
+      "bio": "Mechanical engineer who spends too much time tinkering with race karts and drone FPV 🏎️💨",
+      "cityOrCollege": "NIT Calicut",
+      "interests": [
+        "Go-Karting",
+        "Drone Racing",
+        "Rock Climbing",
+        "EDM"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_07",
+      "name": "Tara Kapoor",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80",
+      "bio": "Psychology researcher exploring cognitive biases. I will probably analyze your text emoji habits 🧠🔍",
+      "cityOrCollege": "Lady Shri Ram College",
+      "interests": [
+        "Psychology",
+        "Podcasts",
+        "Thrifting",
+        "Board Games"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_08",
+      "name": "Siddharth Rao",
+      "age": 24,
+      "photo": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=800&q=80",
+      "bio": "Data science nerd who loves sunrise runs, street food trails, and dog-spotting in parks 🐕🏃‍♂️",
+      "cityOrCollege": "IISc Bangalore",
+      "interests": [
+        "Marathon Running",
+        "Street Food",
+        "Dogs",
+        "Open Source"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_09",
+      "name": "Zoya Alvi",
+      "age": 20,
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+      "bio": "Journalism student chasing stories and sunset viewpoints. Tell me your most controversial hot take 🎙️🌅",
+      "cityOrCollege": "Ashoka University",
+      "interests": [
+        "Journalism",
+        "Debate",
+        "Sunsets",
+        "Ramen"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_10",
+      "name": "Vikram Mehta",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80",
+      "bio": "Fintech analyst who escapes to the mountains every long weekend. Beginner boulderer 🧗‍♂️⛰️",
+      "cityOrCollege": "IIT Bombay",
+      "interests": [
+        "Trekking",
+        "Bouldering",
+        "Crypto",
+        "Photography"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_11",
+      "name": "Ananya Iyer",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+      "bio": "Classical violinist moonlighting in an indie fusion band. Also bake lethal brownies 🎻🧁",
+      "cityOrCollege": "Loyola College, Chennai",
+      "interests": [
+        "Violin",
+        "Baking",
+        "Indie Music",
+        "Cats"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_12",
+      "name": "Aditya Chauhan",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+      "bio": "Law student with a soft corner for 90s anime and high-altitude tea stalls ⚖️☕",
+      "cityOrCollege": "NLU Delhi",
+      "interests": [
+        "Anime",
+        "Moot Court",
+        "Chai",
+        "Formula 1"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_13",
+      "name": "Kriti Roy",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80",
+      "bio": "Visual arts major painting huge oil canvases and hunting for antique bookstores 🎨📖",
+      "cityOrCollege": "Presidency University",
+      "interests": [
+        "Oil Painting",
+        "Thrift Books",
+        "Museums",
+        "Coffee"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_14",
+      "name": "Nikhil Kulkarni",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1480429370139-e0132c086e2a?auto=format&fit=crop&w=800&q=80",
+      "bio": "Aerospace engineer dreaming of reusable rockets. Always up for stargazing and late night pizza 🚀🍕",
+      "cityOrCollege": "IIT Madras",
+      "interests": [
+        "Astronomy",
+        "Pizza",
+        "Rockets",
+        "Synthwave"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_15",
+      "name": "Isha Sundaram",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80",
+      "bio": "Biotech researcher working on microbial genetics. Plant mom to 14 succulents and counting 🌿🔬",
+      "cityOrCollege": "Delhi University",
+      "interests": [
+        "Plants",
+        "Microbiology",
+        "Scrabble",
+        "Hiking"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_16",
+      "name": "Devansh Mittal",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1492446845049-9c50ce313d00?auto=format&fit=crop&w=800&q=80",
+      "bio": "Commerce undergrad running an e-commerce side hustle. Will teach you how to make the best pour-over ☕📈",
+      "cityOrCollege": "SRCC Delhi",
+      "interests": [
+        "Pour-over Coffee",
+        "Startups",
+        "Tennis",
+        "Podcasts"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_17",
+      "name": "Pooja Hegde",
+      "age": 20,
+      "photo": "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=800&q=80",
+      "bio": "Contemporary dancer and theatre enthusiast. If music is playing, I cannot sit still 💃🎭",
+      "cityOrCollege": "Christ University Bangalore",
+      "interests": [
+        "Dance",
+        "Theatre",
+        "Rooftop Cafes",
+        "Salsa"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_18",
+      "name": "Tanmay Bhatia",
+      "age": 24,
+      "photo": "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=800&q=80",
+      "bio": "Game developer building retro pixel-art RPGs. Huge fan of stand-up comedy and midnight taco runs 🎮🌮",
+      "cityOrCollege": "IIIT Hyderabad",
+      "interests": [
+        "Game Dev",
+        "Pixel Art",
+        "Stand-up Comedy",
+        "Tacos"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_19",
+      "name": "Rhea Sen",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=800&q=80",
+      "bio": "Fashion design student styling thrift fits. Can give you a wardrobe upgrade in 15 minutes flat 👗✨",
+      "cityOrCollege": "NIFT Mumbai",
+      "interests": [
+        "Fashion Design",
+        "Vintage",
+        "Fleamarkets",
+        "House Music"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_20",
+      "name": "Yashwant Singhania",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=800&q=80",
+      "bio": "Civil engineer who loves bridges, long road trips, and vinyl listening bars 🌉🚗",
+      "cityOrCollege": "IIT Kanpur",
+      "interests": [
+        "Road Trips",
+        "Bridges",
+        "Jazz",
+        "Camping"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_21",
+      "name": "Simran Kaur",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=800&q=80",
+      "bio": "English honors student who believes everything is better with cardamom chai and old Bollywood songs ☕🎶",
+      "cityOrCollege": "Miranda House, Delhi",
+      "interests": [
+        "Chai",
+        "Old Bollywood",
+        "Poetry",
+        "Stargazing"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_22",
+      "name": "Farhan Qureshi",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+      "bio": "Wildlife biology researcher and birdwatcher. Ask me how to tell apart 20 species of kingfishers 🦜🌿",
+      "cityOrCollege": "NCBS Bangalore",
+      "interests": [
+        "Wildlife",
+        "Birdwatching",
+        "Kayaking",
+        "Documentaries"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_23",
+      "name": "Nandini Bose",
+      "age": 20,
+      "photo": "https://images.unsplash.com/photo-1514315384763-ba401779410f?auto=format&fit=crop&w=800&q=80",
+      "bio": "Math and computing major solving puzzles. I love spicy momos, origami, and rainy evenings 🥟☔",
+      "cityOrCollege": "ISI Kolkata",
+      "interests": [
+        "Puzzles",
+        "Origami",
+        "Momos",
+        "Rain"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_24",
+      "name": "Karan Malhotra",
+      "age": 24,
+      "photo": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=80",
+      "bio": "Fitness coach & nutrition buff. When not lifting, I'm probably experimenting with high-protein sourdough 🏋️‍♂️🥪",
+      "cityOrCollege": "Mumbai University",
+      "interests": [
+        "Fitness",
+        "Cooking",
+        "Calisthenics",
+        "Cycling"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_25",
+      "name": "Avani Joshi",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?auto=format&fit=crop&w=800&q=80",
+      "bio": "Environmental law student fighting for clean rivers. Big fan of acoustic covers and pottery classes 🏺🌊",
+      "cityOrCollege": "Symbiosis Pune",
+      "interests": [
+        "Pottery",
+        "Acoustic Music",
+        "Sustainability",
+        "Reading"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_26",
+      "name": "Manish Agarwal",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+      "bio": "Full-stack developer building open source apps. Avid coffee snob and keyboard customizer ⌨️☕",
+      "cityOrCollege": "VIT Vellore",
+      "interests": [
+        "Keyboards",
+        "Coding",
+        "Anime",
+        "Bouldering"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_27",
+      "name": "Sanah Mirza",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=800&q=80",
+      "bio": "Mass media student who makes micro-documentaries. Looking for someone who doesn't skip Spotify ads 🎬🎧",
+      "cityOrCollege": "Xavier's Mumbai",
+      "interests": [
+        "Filmmaking",
+        "Documentaries",
+        "Indie Rock",
+        "Street Art"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_28",
+      "name": "Pranav Vashisth",
+      "age": 22,
+      "photo": "https://images.unsplash.com/photo-1508341591423-4347099e1f19?auto=format&fit=crop&w=800&q=80",
+      "bio": "Robotics engineer building autonomous quadrupeds. Love weekend road trips and filter coffee 🤖🛣️",
+      "cityOrCollege": "IIT Delhi",
+      "interests": [
+        "Robotics",
+        "Filter Coffee",
+        "Cycling",
+        "Sci-Fi"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_29",
+      "name": "Divya Nambiar",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80",
+      "bio": "Linguistics undergrad learning my 5th language. I can teach you tongue twisters in 3 dialects 🗣️📚",
+      "cityOrCollege": "University of Hyderabad",
+      "interests": [
+        "Linguistics",
+        "Board Games",
+        "Tea",
+        "Calligraphy"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_30",
+      "name": "Aakash Tandon",
+      "age": 23,
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+      "bio": "Architecture photographer chasing golden hour across historic monuments. Collector of old postcards 📷🏛️",
+      "cityOrCollege": "SPA Delhi",
+      "interests": [
+        "Photography",
+        "Heritage Walks",
+        "Architecture",
+        "Coffee"
+      ],
+      "hasPreLikedMe": false
+    },
+    {
+      "id": "coy_user_31",
+      "name": "Sanya Chawla",
+      "age": 21,
+      "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+      "bio": "Culinary arts student perfecting French pastries and spicy regional street food. Will cook for you 🥐🌶️",
+      "cityOrCollege": "IHM Mumbai",
+      "interests": [
+        "Baking",
+        "Cooking",
+        "Food Trails",
+        "Wine Tasting"
+      ],
+      "hasPreLikedMe": true
+    },
+    {
+      "id": "coy_user_32",
+      "name": "Varun Reddy",
+      "age": 24,
+      "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
+      "bio": "Aerodynamics researcher and karting enthusiast. Trying to master Spanish on Duolingo 🏎️🇪🇸",
+      "cityOrCollege": "IIT Kharagpur",
+      "interests": [
+        "Karting",
+        "Spanish",
+        "Aero",
+        "Classic Rock"
+      ],
+      "hasPreLikedMe": false
+    }
+  ],
+  "swipes": [],
+  "matches": []
+}
