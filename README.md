@@ -2,6 +2,11 @@
 
 An enterprise-grade, mobile-first, privacy-engineered **"Discover"** card-swiping and confidential mutual matching engine built for **Coy** ([app.getcoy.com](https://app.getcoy.com)).
 
+[![Live Demo on Vercel](https://img.shields.io/badge/Live_Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://coy-omega.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/mishrarakesh-1902/COY)
+
+🚀 **Live Deployment URL:** [https://coy-omega.vercel.app/](https://coy-omega.vercel.app/)
+
 ---
 
 ## 📸 Visual Showcase & Screenshots
