@@ -1,90 +1,178 @@
-# Coy SDE Intern Assignment: Discover Tab & Product Architecture
+# Coy SDE Intern Assignment: Full Architectural Blueprint & Technical Report
 
-A mobile-first, privacy-engineered **"Discover"** swipe experience built for **Coy** alongside its existing secret crush matching ecosystem.
+An enterprise-grade, mobile-first, privacy-engineered **"Discover"** card-swiping and confidential mutual matching engine built for **Coy** ([app.getcoy.com](https://app.getcoy.com)).
+
+---
+
+## 📸 Visual Showcase & Screenshots
+
+> *Replace the placeholder paths below with your actual recorded screenshots or demo GIFs.*
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <b>📱 1. Discover Swipe Stack & Card Gestures</b><br/><br/>
+        <!-- SCREENSHOT 1: Attach your Discover Tab / Swipe gesture screenshot below -->
+        <img src="./docs/screenshots/discover-swipe.png" alt="Discover Tab Swipe Experience" width="100%" style="border-radius: 12px; border: 1px solid #334155;" />
+        <br/>
+        <i>Smooth card drag physics, live "LIKE/PASS" badges, college tags, and bottom controls</i>
+      </td>
+      <td align="center" width="50%">
+        <b>🎉 2. "It's a Match!" Celebration & Modal</b><br/><br/>
+        <!-- SCREENSHOT 2: Attach your Match modal celebration screenshot below -->
+        <img src="./docs/screenshots/its-a-match.png" alt="It's a Match Modal Celebration" width="100%" style="border-radius: 12px; border: 1px solid #334155;" />
+        <br/>
+        <i>Real-time confetti particle explosion, dual avatars, and instant transition to Matches</i>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
 ## 📋 Table of Contents
-1. [Part A: Product Exploration & Core Feature Proposals](#part-a-product-exploration--core-feature-proposals)
-2. [Part B: Architecture & Tech Stack](#part-b-architecture--tech-stack)
-3. [Key Requirements Delivered](#key-requirements-delivered)
-4. [Strict Privacy Guarantee](#strict-privacy-guarantee)
-5. [Backend API Documentation](#backend-api-documentation)
-6. [Getting Started & Local Setup](#getting-started--local-setup)
-7. [Testing the Flow](#testing-the-flow)
+1. [Assignment Requirement vs. Delivered Status Matrix](#-assignment-requirement-vs-delivered-status-matrix)
+2. [Part A: Product Exploration & Core Feature Suggestions](#-part-a-product-exploration--core-feature-suggestions)
+3. [System Architecture & Data Flow](#-system-architecture--data-flow)
+4. [Strict Privacy Guarantee (The Core Promise of Coy)](#-strict-privacy-guarantee-the-core-promise-of-coy)
+5. [Backend API Specifications](#-backend-api-specifications)
+6. [Frontend UI/UX & Gesture Engineering](#-frontend-uiux--gesture-engineering)
+7. [Local Setup, Execution & Testing Guide](#-local-setup-execution--testing-guide)
 
 ---
 
-## 💡 Part A: Product Exploration & Core Feature Proposals
+## 📊 Assignment Requirement vs. Delivered Status Matrix
 
-### Coy App Analysis:
-Coy is a high-intent, confidential mutual connection platform where embarrassment is eliminated by guaranteeing double-blind matching. In exploring the core loops (Phone OTP login, Adding a crush, Email verification, Invite links, and Extra slots), two fundamental friction points emerge:
-1. **The Anxiety of Ambiguity:** When an invited crush receives a notification (*"Someone added you as their crush on Coy"*), they often hesitate or suspect spam unless they have high confidence the sender is someone in their social sphere.
-2. **The Dormancy Dilemma:** Unrequited or dormant crushes sit indefinitely in slots, reducing active platform engagement.
+This table maps every single requirement stated in the assignment PDF directly to our concrete implementation:
 
-### Feature Proposal 1: "Campus Orbit & Social Proximity Hints" (Zero-Knowledge Badges)
-* **What it is:** When a recipient receives an invite or crush notification, Coy shows a privacy-preserving clue—e.g., *"Someone from your college batch (IIT Delhi '25)"* or *"Someone in your mutual social circle"*, without revealing any identifiable data.
-* **Why it is required:**
-  - **Dramatically boosts invite conversion:** Cold invites often feel suspicious or spammy. A verified proximity signal assures the recipient that a genuine peer added them.
-  - **Preserves Coy's core promise:** The sender's identity remains 100% confidential, but the social validation turns cold skepticism into warm curiosity.
-
-### Feature Proposal 2: "Timed Crush Windows & Dynamic Urgency Drops"
-* **What it is:** Crushes added to slots have an active window (e.g., 14 days). If unreciprocated, the slot unlocks automatically for reuse, and users receive periodic *"Sync Reminders"* when someone in their area recently joined.
-* **Why it is required:**
-  - **Increases App Re-engagement:** Traditional dating apps suffer from profile exhaustion. A timed window creates healthy FOMO and prompts recipients to install and check Coy before time runs out.
-  - **Monetization & Slot Economy:** Gives users a natural rhythm to rotate crushes or purchase extra persistent slots without feeling penalised.
+| Section | Exact PDF Requirement | Implementation in this Codebase | Status |
+|---|---|---|:---:|
+| **Part A** | Sign up & explore Coy flows (Phone OTP, Adding crush, Email verification, Invite link, Extra slots) | Explored complete user loop; synthesized viral growth & friction edge cases | **DONE ✅** |
+| **Part A** | Suggest two core features for Coy with business & user rationale | Proposed: **1) Campus Orbit Proximity Badges**, and **2) Timed Crush Windows with Urgency Drops** | **DONE ✅** |
+| **Part B: Scope** | Standalone app in public GitHub repo with tab bar | Built at `https://github.com/mishrarakesh-1902/COY.git` with persistent state | **DONE ✅** |
+| **Part B: Scope** | Placeholder "Home" tab (kept blank) alongside "Discover" tab | Fixed bottom navigation bar with blank placeholder `HomePlaceholder.tsx` and active `Discover` tab | **DONE ✅** |
+| **Part B: Tech Stack** | Frontend: React.js or Next.js (preferred), mobile-first | **Next.js 14 (App Router) + TypeScript + Tailwind CSS** structured in mobile frame (`max-w-md`) | **DONE ✅** |
+| **Part B: Tech Stack** | Backend: Node.js with Express, or Next.js API routes | **Next.js Route Handlers** (`/app/api/...`) with URL rewrites for clean endpoints | **DONE ✅** |
+| **Part B: Tech Stack** | Data: JSON file, SQLite or database of choice (no auth needed) | **File-backed persistent JSON engine (`data/coy_storage.json`)** with single logged-in session | **DONE ✅** |
+| **1. Profile Data** | Seed at least 30 mock profiles (name, age, photo, bio, city/college, interests) | **32 realistic Indian university student profiles** in `data/profiles.ts` with Unsplash portraits and badges | **DONE ✅** |
+| **1. Profile Data** | Some seeded profiles should have already liked user for demo matches | **12 profiles** pre-seeded with server-side `hasPreLikedMe: true` (e.g., Aanya Sharma, Meera Patel) | **DONE ✅** |
+| **2. Swipe UX** | Show one profile card at a time with smooth animations | **Framer Motion stack** with spring physics, rotation tilt, and subtle preview of next card | **DONE ✅** |
+| **2. Swipe UX** | Drag gestures on mobile, buttons on desktop | Touch `drag="x"`, desktop action buttons (❌ Pass, 💚 Like), and keyboard arrows ($\leftarrow / \rightarrow$) | **DONE ✅** |
+| **2. Swipe UX** | Clear feedback on each swipe | Dynamic **"LIKE"** (emerald) and **"PASS"** (rose) stamps scaling opacity based on drag distance | **DONE ✅** |
+| **2. Swipe UX** | Swiped profile must never appear again | User swipes are recorded persistently; filtered out from subsequent feed queries | **DONE ✅** |
+| **2. Swipe UX** | Clear empty state when there are no profiles left | Friendly **"You're all caught up"** screen with a one-click **Reset Demo Profiles** button | **DONE ✅** |
+| **3. Matching** | Match happens only when both users have liked each other | Evaluated strictly on the server: `action === 'like' && profile.hasPreLikedMe === true` | **DONE ✅** |
+| **3. Matching** | Show an "It's a match!" screen at that moment | Animated celebratory modal with **Canvas Confetti**, interlocking avatars, and pulsing heart | **DONE ✅** |
+| **3. Matching** | A "Matches" view listing all mutual matches | Dedicated **Matches tab** featuring live badge counter, story carousels, and secret chat modal | **DONE ✅** |
+| **3. Matching** | **Never reveal who liked user unless mutual (Core Promise)** | `hasPreLikedMe` is stripped from all feed payloads; client inspection in DevTools shows 0 leaks | **DONE ✅** |
+| **4. Backend APIs** | `GET /feed`: returns profiles not yet swiped on | Handled via `GET /api/feed` (and `/feed` rewrite) | **DONE ✅** |
+| **4. Backend APIs** | `POST /swipe`: records like/pass & returns if match occurred | Handled via `POST /api/swipe` (and `/swipe` rewrite) returning `{ match: boolean, matchedProfile }` | **DONE ✅** |
+| **4. Backend APIs** | `GET /matches`: returns user's mutual matches | Handled via `GET /api/matches` (and `/matches` rewrite) returning mutual matches list | **DONE ✅** |
+| **4. Backend APIs** | Swipes and matches must persist across page reloads | Stored in `data/coy_storage.json`; survives hard browser refreshes | **DONE ✅** |
 
 ---
 
-## 🛠️ Part B: Architecture & Tech Stack
+## 💡 Part A: Product Exploration & Core Feature Suggestions
 
-Built strictly according to the assignment's technical guidelines:
-- **Frontend:** Next.js 14 (App Router) + TypeScript, tailored for a mobile-first viewport (`max-w-md` app frame with touch gestures).
-- **Styling & UI:** Tailwind CSS + Lucide Icons + Glassmorphism accents.
-- **Gestures & Animations:** Framer Motion (touch drag gestures, rotational physics, dynamic LIKE/PASS stamp overlays, spring exits) + Canvas Confetti.
-- **Backend:** Next.js API Routes with URL rewrites supporting both `/api/...` and clean endpoints (`/feed`, `/swipe`, `/matches`).
-- **Data Persistence:** File-backed persistent JSON engine (`data/coy_storage.json`) that preserves swipes, matches, and profile states across browser reloads.
+### Exploration Context
+Coy is built on a radical value proposition: **Zero-risk romantic intent**. In standard dating apps, broadcasting a profile exposes users to social exposure or embarrassment. Coy solves this by creating a double-blind registry. After examining the critical paths—Phone OTP onboarding, Crush selection, Email verification, Invite loop, and Slot monetization—two core product opportunities stand out:
+
+### 1. "Campus Orbit & Social Proximity Hints" (Zero-Knowledge Trust Signals)
+* **The User Problem:** When an un-onboarded crush receives an SMS/WhatsApp invite (*"Someone added you as a secret crush on Coy"*), they experience immediate skepticism. Without context, many assume it is spam, malware, or phishing.
+* **The Solution:** Deliver zero-knowledge proximity badges attached to the invite, such as:
+  - *"Someone from your college batch (e.g., IIT Delhi '25)"*
+  - *"Someone in your second-degree contact graph"*
+* **Why it is Required:**
+  - **Dramatically Accelerates Viral Conversion:** Cold invites convert poorly; social proximity signals provide instant validation that a real peer created the entry.
+  - **Protects Privacy Integrity:** The individual sender's identity remains mathematically concealed, preserving Coy’s core promise while removing the friction that stalls user acquisition.
+
+### 2. "Timed Crush Windows & Dynamic Urgency Drops"
+* **The User Problem:** In the current system, an added crush can sit in a slot indefinitely without resolution. This creates inactive slots and diminishes the user's dopamine loop.
+* **The Solution:** Introduce a 14-day dynamic "Sync Window" for each slot. If an invite is sent, the recipient sees a countdown (*"Your secret admirer's slot expires in 48 hours"*). If time elapses without reciprocity, the slot gracefully resets for the sender.
+* **Why it is Required:**
+  - **Creates Natural Action Urgency:** Scarcity and time limits prompt invitees to download the app and check before the window lapses.
+  - **Revitalizes the Slot Economy:** Gives users a healthy cadence to re-engage with the app and purchase extra persistent slots without feeling stuck.
 
 ---
 
-## 🚀 Key Requirements Delivered
+## 🏛️ System Architecture & Data Flow
 
-| Requirement | Implementation Details | Status |
-|---|---|:---:|
-| **Tab Navigation** | Fixed bottom navigation with blank placeholder **Home**, **Discover** (swiping engine), and **Matches** (with live badge counter) | ✅ |
-| **Profile Data** | 32 pre-seeded mock profiles with high-resolution portraits, ages, bios, college/city badges, and interest tags | ✅ |
-| **Demo Match Seeding** | 12 seeded profiles have secret incoming likes pre-configured to guarantee real-time matches during demos | ✅ |
-| **Swipe Gestures** | One card at a time with touch drag gestures on mobile, desktop action buttons, and keyboard shortcuts ($\leftarrow$ Pass, $\rightarrow$ Like) | ✅ |
-| **Card Animations** | Dynamic rotation based on drag offset, opacity fade on stamps, and smooth card exit transitions | ✅ |
-| **Single-View Guarantee**| Profiles swiped on (either like or pass) are stored persistently and never shown again in the feed | ✅ |
-| **Empty State** | Friendly "You're all caught up" screen with a one-click "Reset Demo Profiles" option for continuous evaluation | ✅ |
-| **Match Moment** | Animated celebration modal with festive confetti explosion, matched avatars, and direct transition to chat | ✅ |
-| **Matches View** | Dedicated screen listing all mutual connections with horizontal story carousels, timestamps, and conversation prompts | ✅ |
-| **Strict Privacy** | Zero leak of `hasPreLikedMe` flag in feed APIs; mutual match calculated strictly server-side | ✅ |
+```
+                                      +-----------------------------+
+                                      |      Browser Client         |
+                                      | (Mobile Frame: max-w-md)    |
+                                      +--------------+--------------+
+                                                     |
+                        +----------------------------+----------------------------+
+                        |                            |                            |
+                        v                            v                            v
+               [ Home Tab ]                 [ Discover Tab ]               [ Matches Tab ]
+           (Blank Placeholder)           (Framer Motion Stack)           (Mutual Connections)
+                                                     |
+                                       User Swipes Card (Like/Pass)
+                                                     |
+                                                     v
+                                      +-----------------------------+
+                                      |   Next.js API Handler       |
+                                      |     (POST /api/swipe)       |
+                                      +--------------+--------------+
+                                                     |
+                              +----------------------+----------------------+
+                              |                                             |
+                              v                                             v
+                      [ Action: PASS ]                              [ Action: LIKE ]
+                              |                                             |
+                   Record in Swipes Store                         Check: Pre-liked User?
+                              |                                             |
+                   Return { match: false }                   +--------------+--------------+
+                                                             |                             |
+                                                             v                             v
+                                                        [ YES: Match ]               [ NO: Unrequited ]
+                                                             |                             |
+                                                    Add to Matches Store         Record in Swipes Store
+                                                    Trigger Confetti Modal       Return { match: false }
+                                                    Return { match: true }
+```
 
 ---
 
 ## 🔒 Strict Privacy Guarantee (The Core Promise of Coy)
 
-In standard dating apps, client payloads often leak `hasLiked` or `isMatch` metadata before the user acts, enabling network sniffing.
+In conventional client-heavy applications, developers mistakenly send the full user record to the browser:
+```json
+// ❌ INSECURE ANTI-PATTERN (Leaking secret like to client DevTools)
+{
+  "id": "coy_user_01",
+  "name": "Aanya Sharma",
+  "hasPreLikedMe": true  <-- SNIFFABLE IN NETWORK TAB!
+}
+```
 
-In this implementation:
-1. **Server-Side Sanitization:** The `getFeed()` function explicitly strips out `hasPreLikedMe` before serialization:
+### How Coy Engine Guarantees Double-Blind Security:
+1. **Server-Side Sanitization:** The data access layer in `lib/db.ts` applies `sanitizeProfile()` before serialization:
    ```typescript
    export function sanitizeProfile(profile: Profile): PublicProfile {
      const { hasPreLikedMe, ...publicProfile } = profile;
      return publicProfile;
    }
    ```
-2. **Client Blindness:** Opening Chrome DevTools Network Tab and inspecting `GET /feed` reveals zero traces of who has liked the logged-in user.
-3. **Double-Blind Computation:** The server only announces a match if and when the client submits a `POST /swipe` with `action: 'like'` on a user who previously reciprocated.
+2. **Network Sniffing Resistance:** Inspecting `GET /feed` in Chrome DevTools shows zero trace of `hasPreLikedMe`.
+3. **Double-Blind Computation:** The mutual match condition is verified strictly on the server:
+   ```typescript
+   if (action === 'like' && profile.hasPreLikedMe) {
+     // Only at this exact moment is the match recorded and revealed
+   }
+   ```
 
 ---
 
-## 📡 Backend API Documentation
+## 📡 Backend API Specifications
 
-### 1. `GET /feed` (or `/api/feed`)
-Returns list of profiles the user has not yet swiped on.
+### 1. `GET /api/feed` (Rewritten as `/feed`)
+Returns profiles the active user has not yet swiped on.
+* **Status:** `200 OK`
+* **Response:**
 ```json
 {
   "success": true,
@@ -93,8 +181,8 @@ Returns list of profiles the user has not yet swiped on.
       "id": "coy_user_01",
       "name": "Aanya Sharma",
       "age": 21,
-      "photo": "https://images.unsplash.com/...",
-      "bio": "Architecture major obsessed with brutalist design...",
+      "photo": "https://images.unsplash.com/photo-1534528741775-53994a69daeb",
+      "bio": "Architecture major obsessed with brutalist design, cold brew, and film photography ☕🎞️",
       "cityOrCollege": "IIT Roorkee",
       "interests": ["Architecture", "Analog Photography", "Coffee", "Indie Pop"]
     }
@@ -103,33 +191,35 @@ Returns list of profiles the user has not yet swiped on.
 }
 ```
 
-### 2. `POST /swipe` (or `/api/swipe`)
-Records a swipe and checks for mutual match.
-- **Request Body:**
-  ```json
-  {
-    "profileId": "coy_user_01",
-    "action": "like"
-  }
-  ```
-- **Response (When Matched):**
-  ```json
-  {
-    "success": true,
-    "match": true,
-    "matchedProfile": {
-      "id": "coy_user_01",
-      "name": "Aanya Sharma",
-      "age": 21,
-      "photo": "https://images.unsplash.com/...",
-      "cityOrCollege": "IIT Roorkee"
-    },
-    "remainingCount": 31
-  }
-  ```
+### 2. `POST /api/swipe` (Rewritten as `/swipe`)
+Records a like or pass action for a profile and calculates mutual status.
+* **Request Body:**
+```json
+{
+  "profileId": "coy_user_01",
+  "action": "like"
+}
+```
+* **Response (Mutual Match):**
+```json
+{
+  "success": true,
+  "match": true,
+  "matchedProfile": {
+    "id": "coy_user_01",
+    "name": "Aanya Sharma",
+    "age": 21,
+    "photo": "https://images.unsplash.com/...",
+    "cityOrCollege": "IIT Roorkee"
+  },
+  "remainingCount": 31
+}
+```
 
-### 3. `GET /matches` (or `/api/matches`)
-Returns all mutual matches for the user.
+### 3. `GET /api/matches` (Rewritten as `/matches`)
+Returns the list of mutual matches.
+* **Status:** `200 OK`
+* **Response:**
 ```json
 {
   "success": true,
@@ -146,45 +236,48 @@ Returns all mutual matches for the user.
 }
 ```
 
-### 4. `POST /reset` (or `/api/reset`)
-Resets all swipes and restores the 32 initial demo profiles for testing.
+### 4. `POST /api/reset` (Rewritten as `/reset`)
+Resets swipes and matches back to the initial 32-card demo state.
 
 ---
 
-## 💻 Getting Started & Local Setup
+## 🎨 Frontend UI/UX & Gesture Engineering
 
-### 1. Clone the repository
+* **Mobile Frame Viewport:** Standardized `max-w-md` shell with simulated iOS/Android ambient status bar, glassmorphism headers, and bottom navigation.
+* **Touch Physics:** Framer Motion `useMotionValue` tracking `x` and `y` displacement. Rotation is dynamically derived: $\text{rotate} = x \times 0.08^\circ$.
+* **Threshold Detection:** Exceeding $100\text{px}$ drag offset or $400\text{px/s}$ gesture velocity automatically triggers a smooth exit spring transition.
+* **Celebration Modal:** `canvas-confetti` dual-cannon blast combined with spring modal entry and pulsating connection indicators.
+
+---
+
+## 💻 Local Setup, Execution & Testing Guide
+
+### Prerequisites
+- Node.js `v18+` or `v20+` or `v24+`
+- npm `v9+` or `v11+`
+
+### 1. Clone & Install
 ```bash
 git clone https://github.com/mishrarakesh-1902/COY.git
 cd COY
-```
-
-### 2. Install dependencies
-```bash
 npm install
 ```
 
-### 3. Run development server
+### 2. Run Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser (preferably in mobile view or responsive mode).
+Open **[http://localhost:3000](http://localhost:3000)** in your browser. (Press `F12` $\rightarrow$ toggle Device Toolbar `Ctrl+Shift+M` to test touch swiping).
 
-### 4. Build for production
+### 3. Run Production Build
 ```bash
 npm run build
 npm run start
 ```
 
----
-
-## 🧪 Testing the Flow
-
-1. Open the app on `http://localhost:3000`.
-2. Notice the initial card **Aanya Sharma (IIT Roorkee)**.
-3. Swipe right or click the 💚 Heart button.
-4. 🎉 **"It's a Match!" celebration modal** immediately triggers because Aanya is pre-seeded with a mutual like.
-5. Tap **"Say Hello in Matches"** or click the **Matches** tab to see your mutual connection.
-6. Return to **Discover** and swipe left (Pass) on **Rohan Verma**. Notice he smoothly exits and will never appear again.
-7. Click the **Home** tab: Notice the clean placeholder as specified in the assignment prompt.
-8. Swipe through cards or click the **Reset** button at the top right anytime to restore all 32 profiles.
+### 4. End-to-End Verification Test
+1. **Swipe Right on Aanya Sharma:** Card 1 is pre-seeded with a mutual like. The celebration screen with confetti will appear immediately.
+2. **Switch to Matches Tab:** Aanya appears under Recent Connections with a badge count of `1`.
+3. **Swipe Left on Rohan Verma:** He exits the screen and is marked as passed.
+4. **Hard Refresh the Browser (`Ctrl+F5`):** Notice neither Aanya nor Rohan reappear in the feed—your swipes persisted.
+5. **Reset Demo:** Click the **Reset** button in the header at any time to restore all 32 cards.
