@@ -19,14 +19,16 @@ An enterprise-grade, mobile-first, privacy-engineered **"Discover"** card-swipin
       <td align="center" width="50%">
         <b>📱 1. Discover Swipe Stack & Card Gestures</b><br/><br/>
         <!-- SCREENSHOT 1: Attach your Discover Tab / Swipe gesture screenshot below -->
-        <img src="./docs/screenshots/discover-swipe.png" alt="Discover Tab Swipe Experience" width="100%" style="border-radius: 12px; border: 1px solid #334155;" />
+       <img width="567" height="930" alt="image" src="https://github.com/user-attachments/assets/163fec47-12b0-42a8-97ee-719653fbf92b" />
+
         <br/>
         <i>Smooth card drag physics, live "LIKE/PASS" badges, college tags, and bottom controls</i>
       </td>
       <td align="center" width="50%">
         <b>🎉 2. "It's a Match!" Celebration & Modal</b><br/><br/>
         <!-- SCREENSHOT 2: Attach your Match modal celebration screenshot below -->
-        <img src="./docs/screenshots/its-a-match.png" alt="It's a Match Modal Celebration" width="100%" style="border-radius: 12px; border: 1px solid #334155;" />
+       <img width="560" height="917" alt="image" src="https://github.com/user-attachments/assets/d7ab0d88-1dc1-4b26-8b44-6b11316d7be5" />
+
         <br/>
         <i>Real-time confetti particle explosion, dual avatars, and instant transition to Matches</i>
       </td>
