@@ -9,54 +9,104 @@ interface DatabaseSchema {
   matches: MatchRecord[];
 }
 
-const DB_DIR = path.join(process.cwd(), 'data');
+// On Vercel / AWS Lambda, the root deployment directory is strictly read-only.
+// Writable storage is located exclusively in `/tmp`.
+const isVercel = Boolean(process.env.VERCEL) || process.env.NODE_ENV === 'production';
+const DB_DIR = isVercel ? '/tmp' : path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DB_DIR, 'coy_storage.json');
+
+// Source seed path to copy from on cold start if needed
+const SEED_SOURCE_FILE = path.join(process.cwd(), 'data', 'coy_storage.json');
 
 export const CURRENT_USER_ID = "coy_user_me";
 
+// In-memory cache across serverless warm requests
+declare global {
+  // eslint-disable-next-line no-var
+  var __coy_cache: DatabaseSchema | undefined;
+}
+
 /**
- * Initialize or read database state from persistent JSON store
+ * Initialize or read database state from persistent JSON store / tmp / memory
  */
 function readDb(): DatabaseSchema {
+  // If in-memory cache is present, return it directly
+  if (globalThis.__coy_cache) {
+    return globalThis.__coy_cache;
+  }
+
   try {
     if (!fs.existsSync(DB_DIR)) {
-      fs.mkdirSync(DB_DIR, { recursive: true });
+      try {
+        fs.mkdirSync(DB_DIR, { recursive: true });
+      } catch (e) {
+        console.warn("Could not create DB_DIR, using memory:", e);
+      }
     }
+
+    // If DB_FILE does not exist in writable directory
     if (!fs.existsSync(DB_FILE)) {
+      // Check if we can seed from existing data file
+      let initialProfiles = SEED_PROFILES;
+      if (fs.existsSync(SEED_SOURCE_FILE)) {
+        try {
+          const raw = fs.readFileSync(SEED_SOURCE_FILE, 'utf-8');
+          const parsed = JSON.parse(raw);
+          if (parsed.profiles && parsed.profiles.length > 0) {
+            initialProfiles = parsed.profiles;
+          }
+        } catch {
+          // fallback to SEED_PROFILES
+        }
+      }
+
       const initialDb: DatabaseSchema = {
-        profiles: SEED_PROFILES,
+        profiles: initialProfiles,
         swipes: [],
         matches: [],
       };
-      fs.writeFileSync(DB_FILE, JSON.stringify(initialDb, null, 2), 'utf-8');
+
+      try {
+        fs.writeFileSync(DB_FILE, JSON.stringify(initialDb, null, 2), 'utf-8');
+      } catch (writeErr) {
+        console.warn("Could not write to DB_FILE on initialization:", writeErr);
+      }
+
+      globalThis.__coy_cache = initialDb;
       return initialDb;
     }
+
     const data = fs.readFileSync(DB_FILE, 'utf-8');
     const parsed = JSON.parse(data) as DatabaseSchema;
     if (!parsed.profiles || parsed.profiles.length === 0) {
       parsed.profiles = SEED_PROFILES;
       writeDb(parsed);
     }
+    globalThis.__coy_cache = parsed;
     return parsed;
   } catch (err) {
-    console.error("Error reading database file, resetting to initial seed:", err);
+    console.error("Error reading database file, using in-memory seed:", err);
     const initialDb: DatabaseSchema = {
       profiles: SEED_PROFILES,
       swipes: [],
       matches: [],
     };
+    globalThis.__coy_cache = initialDb;
     return initialDb;
   }
 }
 
 function writeDb(data: DatabaseSchema): void {
+  // Always update in-memory cache
+  globalThis.__coy_cache = data;
+
   try {
     if (!fs.existsSync(DB_DIR)) {
       fs.mkdirSync(DB_DIR, { recursive: true });
     }
     fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
   } catch (err) {
-    console.error("Error writing database file:", err);
+    console.warn("Notice: Persistent file write skipped (using memory cache):", err);
   }
 }
 
